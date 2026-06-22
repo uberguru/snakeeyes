@@ -71,7 +71,18 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (val1 === val2 && val2 === val3) {
                 diceIndividual.textContent = `Triples! (${val1} + ${val2} + ${val3})`;
             } else if (val1 === val2 || val1 === val3 || val2 === val3) {
-                diceIndividual.textContent = `Doubles! (${val1}, ${val2}, ${val3})`;
+                let matchVal, otherVal;
+                if (val1 === val2) {
+                    matchVal = val1;
+                    otherVal = val3;
+                } else if (val1 === val3) {
+                    matchVal = val1;
+                    otherVal = val2;
+                } else {
+                    matchVal = val2;
+                    otherVal = val1;
+                }
+                diceIndividual.textContent = `Doubles! (${matchVal} + ${matchVal} and a ${otherVal})`;
             } else {
                 diceIndividual.textContent = `${val1}, ${val2} and ${val3}`;
             }
