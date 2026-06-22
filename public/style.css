@@ -96,36 +96,48 @@ h1 {
     box-shadow: 
         inset 0 2px 3px rgba(0, 0, 0, 0.2),
         0 1px 1px rgba(255, 255, 255, 0.5);
-    display: none; /* Hidden by default */
+    opacity: 0; /* Hidden by default but still occupies grid cell space */
+    transition: opacity 0.15s ease;
 }
 
+/* Explicit dot placement within the 3x3 grid */
+.pos-1 { grid-area: 1 / 1; }
+.pos-2 { grid-area: 1 / 2; }
+.pos-3 { grid-area: 1 / 3; }
+.pos-4 { grid-area: 2 / 1; }
+.pos-5 { grid-area: 2 / 2; }
+.pos-6 { grid-area: 2 / 3; }
+.pos-7 { grid-area: 3 / 1; }
+.pos-8 { grid-area: 3 / 2; }
+.pos-9 { grid-area: 3 / 3; }
+
 /* Dot Positions logic */
-.die[data-face="1"] .pos-5 { display: block; }
+.die[data-face="1"] .pos-5 { opacity: 1; }
 
-.die[data-face="2"] .pos-3,
-.die[data-face="2"] .pos-7 { display: block; }
+.die[data-face="2"] .pos-1,
+.die[data-face="2"] .pos-9 { opacity: 1; }
 
-.die[data-face="3"] .pos-3,
+.die[data-face="3"] .pos-1,
 .die[data-face="3"] .pos-5,
-.die[data-face="3"] .pos-7 { display: block; }
+.die[data-face="3"] .pos-9 { opacity: 1; }
 
 .die[data-face="4"] .pos-1,
 .die[data-face="4"] .pos-3,
 .die[data-face="4"] .pos-7,
-.die[data-face="4"] .pos-9 { display: block; }
+.die[data-face="4"] .pos-9 { opacity: 1; }
 
 .die[data-face="5"] .pos-1,
 .die[data-face="5"] .pos-3,
 .die[data-face="5"] .pos-5,
 .die[data-face="5"] .pos-7,
-.die[data-face="5"] .pos-9 { display: block; }
+.die[data-face="5"] .pos-9 { opacity: 1; }
 
 .die[data-face="6"] .pos-1,
 .die[data-face="6"] .pos-3,
 .die[data-face="6"] .pos-4,
 .die[data-face="6"] .pos-6,
 .die[data-face="6"] .pos-7,
-.die[data-face="6"] .pos-9 { display: block; }
+.die[data-face="6"] .pos-9 { opacity: 1; }
 
 /* Rolling Animations */
 .rolling-left {
