@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Eyes - Dice Roller</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Snake Eyes</h1>
+            <p class="subtitle">Roll the red dice and test your luck!</p>
+        </header>
+
+        <main>
+            <div class="dice-container">
+                <!-- Die 1 -->
+                <div class="die" id="die1" data-face="1">
+                    <div class="dot pos-1"></div>
+                    <div class="dot pos-2"></div>
+                    <div class="dot pos-3"></div>
+                    <div class="dot pos-4"></div>
+                    <div class="dot pos-5"></div>
+                    <div class="dot pos-6"></div>
+                    <div class="dot pos-7"></div>
+                    <div class="dot pos-8"></div>
+                    <div class="dot pos-9"></div>
+                </div>
+
+                <!-- Die 2 -->
+                <div class="die" id="die2" data-face="1">
+                    <div class="dot pos-1"></div>
+                    <div class="dot pos-2"></div>
+                    <div class="dot pos-3"></div>
+                    <div class="dot pos-4"></div>
+                    <div class="dot pos-5"></div>
+                    <div class="dot pos-6"></div>
+                    <div class="dot pos-7"></div>
+                    <div class="dot pos-8"></div>
+                    <div class="dot pos-9"></div>
+                </div>
+            </div>
+
+            <div class="result-panel">
+                <div class="result-label">Result</div>
+                <div class="result-sum" id="resultSum">-</div>
+                <div class="dice-individual" id="diceIndividual">Roll to begin!</div>
+            </div>
+
+            <button id="rollBtn" class="roll-button">Roll Dice</button>
+        </main>
+
+        <footer>
+            <p>Press <kbd>Space</kbd> or click to roll</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
