@@ -22,7 +22,7 @@ body {
     border-radius: 24px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
     width: 90%;
-    max-width: 480px;
+    max-width: 560px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.8);
 }
@@ -50,7 +50,7 @@ h1 {
 .dice-container {
     display: flex;
     justify-content: center;
-    gap: 2.5rem;
+    gap: 1.5rem;
     margin-bottom: 2.5rem;
     perspective: 600px; /* Gives 3D depth to animations */
 }
@@ -144,6 +144,10 @@ h1 {
     animation: rollLeft 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+.rolling-center {
+    animation: rollCenter 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 .rolling-right {
     animation: rollRight 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
@@ -163,6 +167,24 @@ h1 {
     }
     100% {
         transform: scale(1) rotateX(360deg) rotateY(-360deg) rotateZ(360deg) translateY(0);
+    }
+}
+
+@keyframes rollCenter {
+    0% {
+        transform: scale(0.9) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateY(0);
+    }
+    15% {
+        transform: scale(1.15) rotateX(120deg) rotateY(0deg) rotateZ(-30deg) translateY(-25px);
+    }
+    45% {
+        transform: scale(1.1) rotateX(240deg) rotateY(0deg) rotateZ(30deg) translateY(-35px);
+    }
+    70% {
+        transform: scale(1.02) rotateX(300deg) rotateY(0deg) rotateZ(-15deg) translateY(-10px);
+    }
+    100% {
+        transform: scale(1) rotateX(360deg) rotateY(0deg) rotateZ(0deg) translateY(0);
     }
 }
 

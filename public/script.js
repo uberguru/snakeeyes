@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const die1 = document.getElementById('die1');
     const die2 = document.getElementById('die2');
+    const die3 = document.getElementById('die3');
     const rollBtn = document.getElementById('rollBtn');
     const resultSum = document.getElementById('resultSum');
     const diceIndividual = document.getElementById('diceIndividual');
@@ -19,23 +20,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Remove animation classes to reset
         die1.classList.remove('rolling-left');
-        die2.classList.remove('rolling-right');
+        die2.classList.remove('rolling-center');
+        die3.classList.remove('rolling-right');
 
         // Force reflow to restart animations
         void die1.offsetWidth;
         void die2.offsetWidth;
+        void die3.offsetWidth;
 
         // Add 3D rotation animations
         die1.classList.add('rolling-left');
-        die2.classList.add('rolling-right');
+        die2.classList.add('rolling-center');
+        die3.classList.add('rolling-right');
 
         // Rapidly shuffle the dice faces while rolling for visual effect
         let shuffleCount = 0;
         const shuffleInterval = setInterval(() => {
             const tempVal1 = Math.floor(Math.random() * 6) + 1;
             const tempVal2 = Math.floor(Math.random() * 6) + 1;
+            const tempVal3 = Math.floor(Math.random() * 6) + 1;
             die1.setAttribute('data-face', tempVal1);
             die2.setAttribute('data-face', tempVal2);
+            die3.setAttribute('data-face', tempVal3);
             shuffleCount++;
 
             if (shuffleCount > 10) {
@@ -48,22 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
             // Final roll results
             const val1 = Math.floor(Math.random() * 6) + 1;
             const val2 = Math.floor(Math.random() * 6) + 1;
-            const sum = val1 + val2;
+            const val3 = Math.floor(Math.random() * 6) + 1;
+            const sum = val1 + val2 + val3;
 
             // Update dice faces to their final values
             die1.setAttribute('data-face', val1);
             die2.setAttribute('data-face', val2);
+            die3.setAttribute('data-face', val3);
 
             // Update text displays
             resultSum.textContent = sum;
             
             // Check for special combinations
-            if (val1 === 1 && val2 === 1) {
-                diceIndividual.innerHTML = `<strong>Snake Eyes!</strong> (1 + 1) 🐍👀`;
-            } else if (val1 === val2) {
-                diceIndividual.textContent = `Doubles! (${val1} + ${val2})`;
+            if (val1 === 1 && val2 === 1 && val3 === 1) {
+                diceIndividual.innerHTML = `<strong>Snake Eyes!</strong> (1 + 1 + 1) 🐍👀`;
+            } else if (val1 === val2 && val2 === val3) {
+                diceIndividual.textContent = `Triples! (${val1} + ${val2} + ${val3})`;
+            } else if (val1 === val2 || val1 === val3 || val2 === val3) {
+                diceIndividual.textContent = `Doubles! (${val1}, ${val2}, ${val3})`;
             } else {
-                diceIndividual.textContent = `${val1} and ${val2}`;
+                diceIndividual.textContent = `${val1}, ${val2} and ${val3}`;
             }
 
             // Animate sum display
@@ -71,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Cleanup animation classes
             die1.classList.remove('rolling-left');
-            die2.classList.remove('rolling-right');
+            die2.classList.remove('rolling-center');
+            die3.classList.remove('rolling-right');
 
             // Re-enable roll button
             rollBtn.disabled = false;
@@ -83,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rollBtn.addEventListener('click', rollDice);
     die1.addEventListener('click', rollDice);
     die2.addEventListener('click', rollDice);
+    die3.addEventListener('click', rollDice);
 
     // Keyboard support (Spacebar)
     document.addEventListener('keydown', (e) => {
